@@ -56,7 +56,8 @@ public class ProductAnalytics {
         }
         return totalValue;
     */
-        return productCatalog.stream().filter(p->p.category().equals(category)).mapToDouble(p->p.price()*p.stock()).sum();
+        return productCatalog.stream().filter(p->p.category().equals(category)).map(p->p.price()*p.stock()).reduce(0.0,(sum,value)->sum+value);
+        //return productCatalog.stream().filter(p->p.category().equals(category)).mapToDouble(p->p.price()*p.stock()).sum();
     }
 
     /**
